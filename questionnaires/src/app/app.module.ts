@@ -8,9 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CardsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
