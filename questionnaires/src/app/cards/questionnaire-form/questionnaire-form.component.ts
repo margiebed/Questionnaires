@@ -1,6 +1,6 @@
 import { Family } from "./../../models/card.model";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormArray } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-questionnaire-form",
@@ -38,20 +38,19 @@ export class QuestionnaireFormComponent implements OnInit {
 
   addFamilyMember() {
     this.family.push(this.buildFamilyMember());
-    console.log(this.form);
   }
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      firstName: "",
-      lastName: "",
+      firstName: ["", { validators: [Validators.required] }],
+      lastName: ["", { validators: [Validators.required] }],
       namesOfParents: "",
       dateOfBirth: "",
-      placeOfBirth: "",
-      pesel: "",
-      address: "",
-      city: "",
-      zipCode: "",
+      placeOfBirth: ["", { validators: [Validators.required] }],
+      pesel: ["", { validators: [Validators.required] }],
+      address: ["", { validators: [Validators.required] }],
+      city: ["", { validators: [Validators.required] }],
+      zipCode: ["", { validators: [Validators.required] }],
       approve: false,
       family: this.formBuilder.array([this.buildFamilyMember()]),
     });
