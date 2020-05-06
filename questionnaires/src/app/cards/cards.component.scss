@@ -6,3 +6,12 @@
 .card-form{
   background-color: green($color: #b8b0b0);
 }
+
+#new-questionnaire-btn
+{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  top: 40px;
+  font-size: 30px;
+}
