@@ -1,0 +1,73 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="firstName" placeholder="Imię" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="lastName" placeholder="Nazwisko" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="namesOfParents"
+          placeholder="Imiona rodziców"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="pesel" placeholder="Pesel" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="dateOfBirth" placeholder="Data" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="placeOfBirth"
+          placeholder="Miejsce urodzenia"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="address"
+          placeholder="Adres do korespondencji"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="city" placeholder="Miasto" />
+      </mat-form-field>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field>
+        <input matInput formControlName="zipCode" placeholder="Kod pocztowy" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox formControlName="approve"> Wyrażam zgodę</mat-checkbox>
+    </div>
+  </div>
+</form>
+<pre>{{ form.value | json }}</pre>
