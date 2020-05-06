@@ -17,5 +17,5 @@ export interface Card {
 export interface Family {
   dob: string;
   name: string;
+  relationship: string;
 }
-

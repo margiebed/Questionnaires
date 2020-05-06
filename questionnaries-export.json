@@ -13,10 +13,12 @@
 	  "zipCode" : "89200",
       "family" : [ {
         "dob" : "14-03-2004",
-        "name" : "Jonas Berk"
+        "name" : "Jonas Berk",
+		 "relationship" : "mąż"
       }, {
         "dob" : "28-01-1982",
-        "name" : "Jason Statham"
+        "name" : "Jason Statham",
+		 "relationship" : "dziecko"
       }],    
       "approve" : true
     }   

@@ -69,5 +69,57 @@
       <mat-checkbox formControlName="approve"> Wyrażam zgodę</mat-checkbox>
     </div>
   </div>
+  <div
+    formArrayName="family"
+    class="family-container shadow"
+    *ngFor="let familyMember of family.controls; index as index"
+  >
+    <div class="row family-header">
+      <div class="col">
+        <span> Członek rodziny - {{ index + 1 }}</span>
+        <mat-icon class="float-right" (click)="removeFamilyMember(index)"
+          >delete_forever</mat-icon
+        >
+      </div>
+    </div>
+    <div class="row" [formGroupName]="index">
+      <div class="col-sm-5">
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="name"
+            placeholder="Imię członka rodziny"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field>
+          <input matInput formControlName="dob" placeholder="Data urodzenia" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field>
+          <mat-select
+            formControlName="relationship"
+            placeholder="pokrewieństwo"
+          >
+            <mat-option
+              *ngFor="let familyMember of familyMembers"
+              [value]="familyMember.value"
+              >{{ familyMember.label }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="addFamilyMember()">
+        Dodaj członka rodziny
+      </button>
+    </div>
+  </div>
 </form>
 <pre>{{ form.value | json }}</pre>
