@@ -2,6 +2,7 @@ import { CardsService } from "./../../core/services/cards.service";
 import { QuestionnaireFormComponent } from "./../questionnaire-form/questionnaire-form.component";
 import { MatDialogRef } from "@angular/material/dialog";
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-new-questionnaire",
@@ -13,6 +14,7 @@ export class NewQuestionnaireComponent implements OnInit {
 
   constructor(
     private cardService: CardsService,
+    private tost: MatSnackBar,
     private dialogRef: MatDialogRef<NewQuestionnaireComponent>
   ) {}
 
@@ -29,9 +31,12 @@ export class NewQuestionnaireComponent implements OnInit {
 
   private onCreatingSuccess() {
     this.dialogRef.close();
+    this.tost.open("Kwestionariusz został dodany pomyślnie", "", {
+      panelClass: "toast-success",
+    });
   }
 
-  private onCreatingFailure() {
-    console.log("some error");
+  private onCreatingFailure(error) {
+    this.tost.open(error.message, "", { panelClass: "toast-error" });
   }
 }

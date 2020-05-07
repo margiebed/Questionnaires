@@ -9,7 +9,11 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarConfig,
+} from "@angular/material/snack-bar";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule } from "@angular/material/select";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -27,6 +31,12 @@ const MATERIAL_MODULES = [
   MatToolbarModule,
 ];
 
+const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
+  duration: 2500,
+  verticalPosition: "top",
+  horizontalPosition: "center",
+};
+
 const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
   width: "800px",
   disableClose: true,
@@ -40,6 +50,10 @@ const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: MAT_DIALOG_GLOBAL_CONFIG,
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: MAT_SNACK_BAR_GLOBAL_CONFIG,
     },
   ],
   exports: [...MATERIAL_MODULES],
