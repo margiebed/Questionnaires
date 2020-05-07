@@ -1,4 +1,4 @@
-import { Card } from './../../models/card.model';
+import { Card } from "./../../models/card.model";
 import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -17,6 +17,11 @@ export class CardsService {
       .snapshotChanges()
       .pipe(map((response) => response.map((card) => this.assignKey(card))));
   }
+
+  addQuestionnaresCard(card: Card) {
+    return this.db.list<Card>(this.API_URL).push(card);
+  }
+
   private assignKey(card) {
     return { ...card.payload.val(), key: card.key };
   }
