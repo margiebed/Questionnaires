@@ -3,12 +3,22 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="firstName" placeholder="Imię" />
+        <mat-error *ngIf="form.get('firstName').hasError('required')"
+          >Imię jest wymagane</mat-error
+        >
+        <mat-error *ngIf="form.get('firstName').hasError('minlength')"
+          >Minimalna ilość znaków to 3</mat-error
+        >
+        <mat-error *ngIf="form.get('firstName').hasError('maxlength')"
+          >Maksymalna ilość znaków to 30</mat-error
+        >
       </mat-form-field>
     </div>
 
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="lastName" placeholder="Nazwisko" />
+        <mat-error>Nazwisko jest wymagane</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
@@ -25,6 +35,7 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="pesel" placeholder="Pesel" />
+        <mat-error>Pesel jest wymagany</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">

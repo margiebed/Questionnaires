@@ -42,7 +42,16 @@ export class QuestionnaireFormComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      firstName: ["", { validators: [Validators.required] }],
+      firstName: [
+        "",
+        {
+          validators: [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(30),
+          ],
+        },
+      ],
       lastName: ["", { validators: [Validators.required] }],
       namesOfParents: "",
       dateOfBirth: "",
