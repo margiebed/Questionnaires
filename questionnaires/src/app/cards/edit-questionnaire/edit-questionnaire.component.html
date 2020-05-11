@@ -1,16 +1,17 @@
-<h2 mat-dialog-title>
-  kwestionariusz osobowy
-  <mat-icon class="float-right" (click)="close()">close</mat-icon>
-</h2>
-<mat-dialog-content>
-  <app-questionnaire-form #questionnaireForm></app-questionnaire-form
-></mat-dialog-content>
+<div class="row">
+  <div class="col-9">
+    <h3>Kwestionaruusz osobowy edycja {{ card?.firstName }}</h3>
+  </div>
+</div>
+<app-questionnaire-form
+  #questionnaireForm
+  [editMode]="true"
+></app-questionnaire-form>
 <mat-dialog-actions>
   <div class="row">
     <div class="col">
       <button mat-raised-button mat-dialog-close>Cancel</button>
       <button
-        (click)="createQuestionnaire()"
         mat-raised-button
         color="primary"
         [disabled]="questionnaireForm.form.invalid"

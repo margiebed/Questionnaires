@@ -39,4 +39,8 @@ export class NewQuestionnaireComponent implements OnInit {
   private onCreatingFailure(error) {
     this.tost.open(error.message, "", { panelClass: "toast-error" });
   }
+
+  close() {
+    this.dialogRef.close();
+  }
 }

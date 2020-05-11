@@ -6,6 +6,7 @@ import { QuestionnaireCardComponent } from "./questionnaire-card/questionnaire-c
 import { NewQuestionnaireComponent } from "./new-questionnaire/new-questionnaire.component";
 import { QuestionnaireFormComponent } from "./questionnaire-form/questionnaire-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { EditQuestionnaireComponent } from './edit-questionnaire/edit-questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     QuestionnaireCardComponent,
     NewQuestionnaireComponent,
     QuestionnaireFormComponent,
+    EditQuestionnaireComponent,
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   entryComponents: [CardsComponent],

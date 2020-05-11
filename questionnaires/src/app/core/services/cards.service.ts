@@ -1,4 +1,4 @@
-import { Card } from "./../../models/card.model";
+import { Card } from "src/app/models/card.model";
 import { map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
@@ -16,6 +16,13 @@ export class CardsService {
       .list<Card>(this.API_URL)
       .snapshotChanges()
       .pipe(map((response) => response.map((card) => this.assignKey(card))));
+  }
+
+  getCard(key: string): Observable<Card> {
+    return this.db
+      .object<Card>("${this.API_URL}/${key}")
+      .snapshotChanges()
+      .pipe(map((card) => this.assignKey(card)));
   }
 
   addQuestionnaresCard(card: Card) {

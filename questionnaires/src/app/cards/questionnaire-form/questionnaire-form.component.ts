@@ -1,5 +1,5 @@
-import { Family } from "./../../models/card.model";
-import { Component, OnInit } from "@angular/core";
+import { Family, Card } from "./../../models/card.model";
+import { Component, OnInit, Input } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 
 @Component({
@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
   styleUrls: ["./questionnaire-form.component.scss"],
 })
 export class QuestionnaireFormComponent implements OnInit {
+  @Input() editMode = false;
   form: FormGroup;
 
   familyMembers = [
@@ -21,22 +22,31 @@ export class QuestionnaireFormComponent implements OnInit {
     this.buildForm();
   }
 
-  buildFamilyMember() {
+  setCard(card: Card) {
+    const { key, ...formData } = card;
+    this.form.patchValue(formData);
+    formData.family.forEach((familyMember) =>
+      this.addFamilyMember(familyMember)
+    );
+  }
+
+  buildFamilyMember(crewMember: Family = {} as Family) {
     return this.formBuilder.group({
-      name: "",
-      dob: "",
-      relationship: "",
+      name: crewMember.name || "",
+      dob: crewMember.dob || "",
+      relationship: crewMember.relationship || "",
     });
   }
 
   get family() {
     return this.form.get("family") as FormArray;
   }
+
   removeFamilyMember(i: number) {
     this.family.removeAt(i);
   }
 
-  addFamilyMember() {
+  addFamilyMember(familyMember?: Family) {
     this.family.push(this.buildFamilyMember());
   }
 
@@ -61,7 +71,9 @@ export class QuestionnaireFormComponent implements OnInit {
       city: ["", { validators: [Validators.required] }],
       zipCode: ["", { validators: [Validators.required] }],
       approve: false,
-      family: this.formBuilder.array([this.buildFamilyMember()]),
+      family: this.formBuilder.array(
+        this.editMode ? [] : [this.buildFamilyMember()]
+      ),
     });
   }
 }

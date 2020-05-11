@@ -1,7 +1,26 @@
 <div class="row cards-container">
-  <div class="card-form" *ngFor= "let card of cards$ | async">
+  <div class="card-form" *ngFor="let card of cards$ | async">
     <app-questionnaire-card [card]="card"></app-questionnaire-card>
   </div>
 </div>
-<button (click)="openQuestionnaireModal()" mat-fab color="accent" id="new-questionnaire-btn"> + </button>
 
+<button
+  (click)="openQuestionnaireModal()"
+  mat-fab
+  color="accent"
+  id="new-questionnaire-btn"
+>
+  +
+</button>
+
+<button
+  *ngFor="let card of cards"
+  ;
+  mat-raised-button
+  color="primary"
+  class="float-right"
+  (click)="goToEditQuestionnaireModal(card)"
+  id="edit-questionnaire-btn"
+>
+  Edit
+</button>
