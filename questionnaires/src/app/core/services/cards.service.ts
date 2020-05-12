@@ -20,7 +20,7 @@ export class CardsService {
 
   getCard(key: string): Observable<Card> {
     return this.db
-      .object<Card>("${this.API_URL}/${key}")
+      .object<Card>(this.API_URL + `/${key}`)
       .snapshotChanges()
       .pipe(map((card) => this.assignKey(card)));
   }
