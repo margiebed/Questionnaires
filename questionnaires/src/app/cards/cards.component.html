@@ -1,37 +1,10 @@
 <div class="row cards-container">
-  <div class="card-form" *ngFor="let card of cards">
-    <!-- <app-questionnaire-card [card]="card"></app-questionnaire-card>
-  </div> -->
-
-    <div class="card-container">
-      <div class="shodow mat-card-content">
-        <div class="row">
-          <div class="col">
-            <p class="name">Login: {{ card.login }}</p>
-            <p class="name">Imię: {{ card.firstName }}</p>
-            <p class="name">Nazwisko: {{ card.lastName }}</p>
-            <p class="name">Imiona rodziców: {{ card.lastName }}</p>
-            <p class="label">Czlonkowie rodziny:</p>
-            <ul>
-              <li *ngFor="let member of card.family">
-                <p>Imię: {{ member.name }},</p>
-                <p>pokrewieństwo: {{ member.relationship }}</p>
-                <p>Data urodzenia: {{ member.dob }}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button
-      mat-raised-button
-      color="primary"
-      class="float-right"
-      (click)="goToEditQuestionnaireModal(card)"
-      id="edit-questionnaire-btn"
-    >
-      Edit
-    </button>
+  <div
+    class="card-form"
+    *ngFor="let card of cards$ | async"
+    (click)="showDetails(card)"
+  >
+    <app-questionnaire-card [card]="card"></app-questionnaire-card>
   </div>
 
   <button

@@ -10,11 +10,11 @@
 <mat-dialog-actions>
   <div class="row">
     <div class="col">
-      <button mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button>Reset</button>
       <button
         mat-raised-button
         color="primary"
-        [disabled]="questionnaireForm.form.invalid"
+        (click)="editQuestionnaireForm()"
       >
         Zapisz
       </button>

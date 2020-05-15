@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col">
+    <h3>
+      Kwestionariusz osobowy
+      <mat-icon class="float-right" (click)="close()">close</mat-icon>
+    </h3>
+    <span class="label"> Imię : {{ card.firstName }}</span>
+    <span class="label"> Nazwisko : {{ card.lastName }}</span>
+    <p>Członkowie rodziny</p>
+    <ul>
+      <li *ngFor="let member of card.family">
+        {{ member.name }}
+      </li>
+    </ul>
+    <button
+      mat-raised-button
+      color="primary"
+      class="float-right"
+      (click)="goToEditQuestionnaireModal()"
+    >
+      Edytuj
+    </button>
+  </div>
+</div>

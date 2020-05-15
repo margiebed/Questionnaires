@@ -6,7 +6,8 @@ import { QuestionnaireCardComponent } from "./questionnaire-card/questionnaire-c
 import { NewQuestionnaireComponent } from "./new-questionnaire/new-questionnaire.component";
 import { QuestionnaireFormComponent } from "./questionnaire-form/questionnaire-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { EditQuestionnaireComponent } from './edit-questionnaire/edit-questionnaire.component';
+import { EditQuestionnaireComponent } from "./edit-questionnaire/edit-questionnaire.component";
+import { DetailsComponent } from "./details/details.component";
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { EditQuestionnaireComponent } from './edit-questionnaire/edit-questionna
     NewQuestionnaireComponent,
     QuestionnaireFormComponent,
     EditQuestionnaireComponent,
+    DetailsComponent,
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
-  entryComponents: [CardsComponent],
+  entryComponents: [NewQuestionnaireComponent, DetailsComponent],
   exports: [CardsComponent],
 })
 export class CardsModule {}

@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class CardsService {
-  private API_URL = "questionnaires";
+  private API_URL = "/questionnaires";
   constructor(private db: AngularFireDatabase) {}
 
   getQuestionnaresCard(): Observable<Card[]> {
@@ -20,13 +20,17 @@ export class CardsService {
 
   getCard(key: string): Observable<Card> {
     return this.db
-      .object<Card>(this.API_URL + `/${key}`)
+      .object<Card>(`${this.API_URL}/${key}`)
       .snapshotChanges()
       .pipe(map((card) => this.assignKey(card)));
   }
 
   addQuestionnaresCard(card: Card) {
     return this.db.list<Card>(this.API_URL).push(card);
+  }
+
+  editCard(key: string, card: Card) {
+    return this.db.object<Card>(`${this.API_URL}/${key}`).update(card);
   }
 
   private assignKey(card) {

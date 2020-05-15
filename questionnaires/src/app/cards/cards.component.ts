@@ -1,8 +1,9 @@
+import { DetailsComponent } from "./details/details.component";
 import { Card } from "./../models/card.model";
 import { Observable } from "rxjs";
 import { Component, OnInit, Input, Inject } from "@angular/core";
 import { CardsService } from "../core/services/cards.service";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { NewQuestionnaireComponent } from "./new-questionnaire/new-questionnaire.component";
 import { Router } from "@angular/router";
 
@@ -11,30 +12,16 @@ import { Router } from "@angular/router";
   templateUrl: "./cards.component.html",
   styleUrls: ["./cards.component.scss"],
 })
-export class CardsComponent implements OnInit {
-  cards: Card[] = [];
+export class CardsComponent {
+  cards$: Observable<Card[]> = this.cardsService.getQuestionnaresCard();
 
-  constructor(
-    private cardsService: CardsService,
-    private dialog: MatDialog,
-    private router: Router
-  ) {}
-
-  ngOnInit() {
-    this.getCards();
-  }
-
-  getCards() {
-    this.cardsService
-      .getQuestionnaresCard()
-      .subscribe((card) => (this.cards = card));
-  }
+  constructor(private cardsService: CardsService, private dialog: MatDialog) {}
 
   openQuestionnaireModal() {
     this.dialog.open(NewQuestionnaireComponent);
   }
 
-  goToEditQuestionnaireModal(card: Card) {
-    this.router.navigate(["/dashboard/cards", card.key]);
+  showDetails(card) {
+    this.dialog.open(DetailsComponent, { data: card });
   }
 }

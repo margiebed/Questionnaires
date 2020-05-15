@@ -11,7 +11,7 @@ export class QuestionnaireFormComponent implements OnInit {
   @Input() editMode = false;
   form: FormGroup;
 
-  familyMembers = [
+  familyMembersLabel = [
     { label: "Mąż", value: "husband" },
     { label: "Żona", value: "wife" },
     { label: "Dziecko", value: "child" },
@@ -30,11 +30,11 @@ export class QuestionnaireFormComponent implements OnInit {
     );
   }
 
-  buildFamilyMember(crewMember: Family = {} as Family) {
+  buildFamilyMember(familyMember: Family = {} as Family) {
     return this.formBuilder.group({
-      name: crewMember.name || "",
-      dob: crewMember.dob || "",
-      relationship: crewMember.relationship || "",
+      name: familyMember.name || "",
+      dob: familyMember.dob || "",
+      relationship: familyMember.relationship || "",
     });
   }
 
@@ -47,7 +47,7 @@ export class QuestionnaireFormComponent implements OnInit {
   }
 
   addFamilyMember(familyMember?: Family) {
-    this.family.push(this.buildFamilyMember());
+    this.family.push(this.buildFamilyMember(familyMember));
   }
 
   private buildForm() {
